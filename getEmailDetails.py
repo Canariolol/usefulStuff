@@ -1,5 +1,5 @@
 import os
-import re # Módulo para Expresiones Regulares
+import re
 from flask import Flask, redirect, request, session, url_for, jsonify
 from datetime import datetime, timedelta
 import email.utils
@@ -122,7 +122,7 @@ def get_data():
 
         # --- LÓGICA PARA CORREOS SALIENTES ---
         unique_outgoing_subjects = {}
-        outgoing_exclude_keywords = ["keywords here"]
+        outgoing_exclude_keywords = ["poner keywords aca"]
         
         sent_threads_request = service.users().threads().list(userId='me', q=f"in:sent{date_query}", maxResults=PROCESSING_LIMIT).execute()
         sent_threads = sent_threads_request.get('threads', [])
@@ -193,7 +193,6 @@ def get_data():
     except Exception as e:
         return jsonify({'error': str(e)}), 500
 
-# --- Ruta de la Página de Resultados ---
 @app.route('/results')
 def results():
     return """
